@@ -9,11 +9,6 @@
 
 package com.facebook.react.modules.deviceinfo;
 
-import javax.annotation.Nullable;
-
-import java.util.HashMap;
-import java.util.Map;
-
 import android.content.Context;
 import android.util.DisplayMetrics;
 
@@ -25,6 +20,11 @@ import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.module.annotations.ReactModule;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.facebook.react.uimanager.DisplayMetricsHolder;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.annotation.Nullable;
 
 /**
  * Module that exposes Android Constants to JS.
@@ -39,6 +39,7 @@ public class DeviceInfoModule extends BaseJavaModule implements
   public DeviceInfoModule(ReactApplicationContext reactContext) {
     this((Context) reactContext);
     mReactApplicationContext = reactContext;
+    mReactApplicationContext.addLifecycleEventListener(this);
   }
 
   public DeviceInfoModule(Context context) {
